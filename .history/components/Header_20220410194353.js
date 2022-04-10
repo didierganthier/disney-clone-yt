@@ -9,14 +9,7 @@ function Header() {
 
     return (
         <div className="sticky bg-[#040714] top-0 z-[1000] flex h-[72px] items-center px-10 md:px-12">
-            <Image
-                src="/images/logo.svg"
-                width={80}
-                height={80}
-                className="cursor-pointer"
-                alt="logo"
-                onClick={() => router.push("/")}
-            />
+            <Image src="/images/logo.svg" width={80} height={80} className="cursor-pointer" alt="logo" />
             {!session && (
                 <div className="hidden ml-10 md:flex items-center space-x-6">
                     <a className="header-link group">
@@ -52,7 +45,7 @@ function Header() {
             ) : (
                 <img
                     src={session.user.image}
-                    alt={session.user.name}
+                    alt={session.user.image}
                     className="ml-auto h-12 w-12 rounded-full object-cover cursor-pointer"
                     onClick={signOut}
                 />
