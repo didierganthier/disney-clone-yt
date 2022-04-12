@@ -51,7 +51,7 @@ function Header() {
                 </button>
             ) : (
                 <img
-                    src={session.user.image}
+                    src={require(session.user.image)}
                     alt={session.user.name}
                     className="ml-auto h-12 w-12 rounded-full object-cover cursor-pointer"
                     onClick={signOut}

@@ -51,7 +51,7 @@ function Header() {
                 </button>
             ) : (
                 <img
-                    src={session.user.image}
+                    src="https://lh3.googleusercontent.com/a-/AOh14GggeZKIKPbloQ4OTAVis-h_Mg_OP2RYLGctNwpC2A=s96-c"
                     alt={session.user.name}
                     className="ml-auto h-12 w-12 rounded-full object-cover cursor-pointer"
                     onClick={signOut}

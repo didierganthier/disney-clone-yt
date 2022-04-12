@@ -17,9 +17,9 @@ export default function Home() {
       {!session? (
         <Hero/>
       ): (
-        <main>
+        
           <Slider/>
-        </main>
+        
       )}
     </div>
   )

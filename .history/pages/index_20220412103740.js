@@ -1,8 +1,6 @@
-import { getSession, useSession } from 'next-auth/client';
+import { getSession } from 'next-auth/client';
 import Head from 'next/head'
 import Header from '../components/Header'
-import Hero from '../components/Hero';
-import Slider from '../components/Slider';
 
 export default function Home() {
   const [session] = useSession();
@@ -18,7 +16,7 @@ export default function Home() {
         <Hero/>
       ): (
         <main>
-          <Slider/>
+          APP
         </main>
       )}
     </div>
@@ -26,7 +24,7 @@ export default function Home() {
 }
 
 export async function getServerSideProps(context){
-  const session = await getSession(context);
+  const session = getSession(context);
 
   return {
       props: {
