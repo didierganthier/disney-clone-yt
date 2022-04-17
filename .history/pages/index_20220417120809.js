@@ -36,10 +36,10 @@ export async function getServerSideProps(context) {
   const session = await getSession(context);
 
   const [popularMoviesRes, popularShowsRes, top_ratedMoviesRes, top_ratedShowsRes] = await Promise.all([
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`),
-    fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`),
-    fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`),
-    fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`)
+    popularMoviesRes = fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`),
+    popularShowsRes = fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`),
+    top_ratedMoviesRes = fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`),
+    top_ratedShowsRes = fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`)
   ]);
 
   const [popularMovies, popularShows, top_ratedMovies, top_ratedShows] = await Promise.all([

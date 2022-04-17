@@ -7,9 +7,8 @@ import MoviesCollection from '../components/MoviesCollection';
 import ShowsCollection from '../components/ShowsCollection';
 import Slider from '../components/Slider';
 
-export default function Home({ popularMovies, popularShows, top_ratedMovies, top_ratedShows, }) {
+export default function Home() {
   const [session] = useSession();
-  console.log(popularMovies);
 
   return (
     <div>
@@ -17,29 +16,29 @@ export default function Home({ popularMovies, popularShows, top_ratedMovies, top
         <title>Disney+</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      {!session ? (
-        <Hero />
-      ) : (
+      <Header/>
+      {!session? (
+        <Hero/>
+      ): (
         <main className='relative min-h-screen after:bg-home after:bg-center after:bg-cover after:bg-no-repeat after:bg-fixed after:absolute after:inset-0 after:z-[-1]'>
-          <Slider />
+          <Slider/>
           <Brands />
-          <MoviesCollection />
-          <ShowsCollection />
+          <MoviesCollection/>
+          <ShowsCollection/>
         </main>
       )}
     </div>
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context){
   const session = await getSession(context);
 
   const [popularMoviesRes, popularShowsRes, top_ratedMoviesRes, top_ratedShowsRes] = await Promise.all([
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`),
-    fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`),
-    fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`),
-    fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`)
+    popularMoviesRes = fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`),
+    popularShowsRes = fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`),
+    top_ratedMoviesRes = fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`),
+    top_ratedShowsRes = fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`)
   ]);
 
   const [popularMovies, popularShows, top_ratedMovies, top_ratedShows] = await Promise.all([
@@ -50,12 +49,8 @@ export async function getServerSideProps(context) {
   ]);
 
   return {
-    props: {
-      session,
-      popularMovies: popularMovies.results,
-      popularShows: popularShows.results,
-      top_ratedMovies: top_ratedMovies.results,
-      top_ratedShows: top_ratedShows.results,
-    },
+      props: {
+          session,
+      },
   };
 }
