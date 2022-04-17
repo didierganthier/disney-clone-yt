@@ -18,7 +18,7 @@ export default function Home() {
       {!session? (
         <Hero/>
       ): (
-        <main className='relative min-h-screen after:bg-home after:bg-center after:bg-cover after:bg-no-repeat after:bg-fixed after:absolute after:inset-0 after:z-[-1]'>
+        <main className='relative min-h-screen after:bg-home after:bg-center'>
           <Slider/>
           <Brands />
         </main>

@@ -4,11 +4,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        'home': "url('/images/background.png')",
-      }
-    },
+    extend: {},
     fontFamily: {
       body: ["Montserrat", "sans-serif"],
     },
